@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="angular.min.js"></script>
+
+
+<script>
+var app =angular.module("filters", []);
+
+app.controller("myctrl",function($scope){
+	 $scope.names =["priya","afreen","diya","sara"];
+
+	
+});
+app.filter("arrange",function(){
+	return function(item,res){
+		if(res==false){
+		var desc=item.sort();
+         return desc;
+		
+	}
+	else if(res==true){
+		var desc=item.sort().reverse();
+         return desc;
+		
+	}
+}
+});
+</script>
+</head>
+
+
+<body  ng-app="filters" ng-controller="myctrl" >
+
+<div ng-repeat="name in names|arrange:true">
+
+    <p> {{name}}</p>
+</div>
+
+<body>
+</html>
